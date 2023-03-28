@@ -13,6 +13,9 @@ public class QuoteServer {
     private static final String QUOTE_1 = "The best way to predict the future is to create it. - Abraham Lincoln";
     private static final String QUOTE_2 = "The only way to do great work is to love what you do. - Steve Jobs";
     private static final String QUOTE_3 = "Believe you can and you're halfway there. - Theodore Roosevelt";
+    private static final String QUOTE_4 = "Dagada, Radaga dagada dagada. - Kristijan Golubovic";
+    private static final String QUOTE_5 = "A tamo su zapravo Turci ziveli - Ivica Dacic";
+    private static final String QUOTE_6 = "Dajte mi jedno konopce da se obesim ovde o ovaj vetrogenerator - Aleksandar Vucic";
     private static final List<String> QUOTES = new ArrayList<>();
 
     public static void main(String[] args) {
@@ -20,6 +23,9 @@ public class QuoteServer {
         QUOTES.add(QUOTE_1);
         QUOTES.add(QUOTE_2);
         QUOTES.add(QUOTE_3);
+        QUOTES.add(QUOTE_4);
+        QUOTES.add(QUOTE_5);
+        QUOTES.add(QUOTE_6);
 
         try (ServerSocket serverSocket = new ServerSocket(PORT)) {
             while (true) {
@@ -43,8 +49,9 @@ public class QuoteServer {
 
         // Send a random quote to the client
         String randomQuote = getRandomQuote();
-        System.out.println(randomQuote);
-        out.println(randomQuote);
+        String jsonResponse = "{\"quote\": \"" + randomQuote + "\"}";
+        System.out.println(jsonResponse);
+        out.println(jsonResponse);
 
         // Close the streams and the client socket
         in.close();
