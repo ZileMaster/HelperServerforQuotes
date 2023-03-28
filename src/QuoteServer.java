@@ -44,6 +44,7 @@ public class QuoteServer {
         // Send a random quote to the client
         String randomQuote = getRandomQuote();
         System.out.println(randomQuote);
+        out.println(randomQuote);
 
         // Close the streams and the client socket
         in.close();
